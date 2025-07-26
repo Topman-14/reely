@@ -8,5 +8,5 @@ const config = getDefaultConfig(__dirname);
 config.resolver.alias = {
   '@': path.resolve(__dirname, './'),
 };
- 
+  
 module.exports = withNativeWind(config, { input: './app/globals.css' })
