@@ -1,3 +1,5 @@
+import { Movie, MovieDetails } from "@/types";
+
 export const TMDB_CONFIG = {
     BASE_URL: "https://api.themoviedb.org/3",
     API_KEY: process.env.EXPO_PUBLIC_TMDB_API_KEY,
@@ -11,7 +13,7 @@ export const TMDB_CONFIG = {
     query,
   }: {
     query: string;
-  }): Promise<any[]> => {
+  }): Promise<Movie[]> => {
     const endpoint = query
       ? `${TMDB_CONFIG.BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
       : `${TMDB_CONFIG.BASE_URL}/discover/movie?sort_by=popularity.desc`;
@@ -31,7 +33,7 @@ export const TMDB_CONFIG = {
   
   export const fetchMovieDetails = async (
     movieId: string
-  ): Promise<any> => {
+  ): Promise<MovieDetails> => {
     try {
       const response = await fetch(
         `${TMDB_CONFIG.BASE_URL}/movie/${movieId}?api_key=${TMDB_CONFIG.API_KEY}`,
