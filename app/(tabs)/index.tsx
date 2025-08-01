@@ -4,7 +4,7 @@ import MovieCard from '@/components/moviecard';
 import Searchbar from '@/components/searchbar';
 import { fetchMovies } from '@/services/api';
 import useFetch from '@/services/use-fetch';
-import { useRouter } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import {
   ActivityIndicator,
   FlatList,
@@ -40,6 +40,7 @@ export default function Index() {
             <Searchbar
               onPress={() => router.push('/search')}
               placeholder='Search for a movie'
+              showKeyboard={false}
             />
             <>
               <Text className='text-lg font-semibold mb-2'>Latest Movies</Text>
@@ -49,9 +50,9 @@ export default function Index() {
                 numColumns={3}
                 columnWrapperStyle={{
                   justifyContent: 'flex-start',
-                  gap: 16,
-                  paddingLeft: 3,
-                  marginBottom: 10,
+                  gap: 12,
+                  paddingLeft: 5,
+                  marginBottom: 14,
                 }}
                 renderItem={({ item }) => <MovieCard {...item} />}
                 className='mt-2 pb-32'
